@@ -59,15 +59,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-  .state('tab.graph', {
-      url: '/graph',
+  .state('tab.cats', {
+      url: '/cats',
       views: {
-        'tab-graph': {
-          templateUrl: 'templates/tab-graph.html',
-          controller: 'GraphCtrl'
+        'tab-cats': {
+          templateUrl: 'templates/tab-cats.html',
+          controller: 'CatCtrl'
         }
       }
     })
+  .state('tab.small-animals', {
+    url: '/small-animals',
+    views: {
+      'tab-small-animals': {
+        templateUrl: 'templates/tab-small-animals.html',
+        controller: 'SmallAnimalsCtrl'
+      }
+    }
+  })
+
+  //animal detail pages
     .state('tab.dog-detail', {
       url: '/dogs/:dogId',
       views: {
@@ -77,16 +88,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+    .state('tab.cat-detail', {
+      url: '/cats/:catId',
+      views: {
+        'tab-cats': {
+          templateUrl: 'templates/cat-detail.html',
+          controller: 'CatDetailCtrl'
+        }
       }
-    }
-  });
+    })
+    .state('tab.small-animal-detail', {
+      url: '/smallAnimals/:smallAnimalId',
+      views: {
+        'tab-small-animals': {
+          templateUrl: 'templates/small-animal-detail.html',
+          controller: 'SmallAnimalDetailCtrl'
+        }
+      }
+    })
+
+  ;
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

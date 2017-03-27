@@ -1,0 +1,18 @@
+<ion-view view-title="Cats">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="cat in cats" type="item-text-wrap" href="#/tab/cats/{{cat.id}}">
+        
+        <img ng-src="{{cat.face}}">
+        <h2>{{cat.name}}</h2>
+        <p>{{cat.lastText}}</p><!--change this to be breed, age or summary of bio ??-->
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(cat)">
+          Delete
+        </ion-option-button>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

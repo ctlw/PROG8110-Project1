@@ -1,0 +1,18 @@
+<ion-view view-title="Small Animals">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="smallAnimal in smallAnimals" type="item-text-wrap" href="#/tab/smallAnimals/{{smallAnimal.id}}">
+        
+        <img ng-src="{{smallAnimal.face}}">
+        <h2>{{smallAnimal.name}}</h2>
+        <p>{{smallAnimal.lastText}}</p><!--change this to be breed, age or summary of bio ??-->
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(smallAnimal)">
+          Delete
+        </ion-option-button>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

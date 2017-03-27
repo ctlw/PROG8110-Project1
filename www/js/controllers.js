@@ -21,49 +21,27 @@ angular.module('starter.controllers', ['nvd3'])
   $scope.dog = Dogs.get($stateParams.dogId);
 })
 
-.controller('GraphCtrl', function($scope, $stateParams, $http) {
-    $scope.options = {
-        chart: {
-            type: 'pieChart',
-            height: 500,
-            x: function(d){
-                return d.province;
-            },
-            y: function(d){
-                return d.transfer;
-            },
-            showLabels: true,
-            duration: 500,
-            labelThreshold: 0.01,
-            labelSunbeamLayout: true,
-            legend: {
-                margin: {
-                    top: 5,
-                    right: 35,
-                    bottom: 5,
-                    left: 0
-                }
-            }
-        }
+
+.controller('CatCtrl', function($scope, Cats) {
+    $scope.cats = Cats.all();
+    $scope.remove = function(cat){
+        Cats.remove(cat);
     };
-    var sUrl = "http://www.infrastructure.gc.ca/alt-format/opendata/transfer-program-programmes-de-transfert-bil.json";
-
-    $http.get(sUrl).then(function(oData){
-      var aKeys = Object.keys(oData.data.gtf);
-      $scope.data = new Array();
-      for(var n = 0; n < aKeys.length; n++){
-          if(oData.data.gtf[aKeys[n]].hasOwnProperty("total")){
-              $scope.data.push({"province":aKeys[n], "transfer":oData.data.gtf[aKeys[n]].total});
-          }
-      }
-
-    });
-
-
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
+.controller('CatDetailCtrl', function($scope, $stateParams, Cats) {
+  $scope.cat = Cats.get($stateParams.catId);
+})
+
+.controller('SmallAnimalsCtrl', function($scope, SmallAnimals) {
+  $scope.smallAnimals = SmallAnimals.all();
+    $scope.remove = function(smallAnimal){
+        SmallAnimals.remove(smallAnimal);
   };
-});
+})
+
+.controller('SmallAnimalDetailCtrl', function($scope, $stateParams, SmallAnimals) {
+  $scope.smallAnimal = SmallAnimals.get($stateParams.smallAnimalId);
+})
+
+;
